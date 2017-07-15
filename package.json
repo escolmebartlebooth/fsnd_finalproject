@@ -1,0 +1,19 @@
+{
+  "name": "fsnd_finalproject",
+  "version": "1.0.0",
+  "description": "mapping project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/escolmebartlebooth/fsnd_finalproject.git"
+  },
+  "author": "david escolme bartlebooth",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/escolmebartlebooth/fsnd_finalproject/issues"
+  },
+  "homepage": "https://github.com/escolmebartlebooth/fsnd_finalproject#readme"
+}
