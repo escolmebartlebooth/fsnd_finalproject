@@ -3,11 +3,23 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    cssmin: {
+        target: {
+          files: [{
+            expand: true,
+            cwd: 'src/static',
+            src: ['**/*.css', '!*.min.css'],
+            dest: 'build/static',
+            ext: '.min.css'
+          }]
+        }
+      },
     uglify: {
       build: {
         files: [{
           expand: true,
-          src: 'src/js/*.js',
+          cwd: 'src/js',
+          src: '**/*.js',
           dest: 'build/js',
           ext: '.min.js'
         }]
@@ -17,8 +29,9 @@ module.exports = function(grunt) {
 
   // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
 
   // Default task(s).
-  grunt.registerTask('default', ['uglify']);
+  grunt.registerTask('default', ['uglify','cssmin']);
 
 };
