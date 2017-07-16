@@ -10,7 +10,7 @@ Setup
             #e9ece5 box backgrounds
             #b3c2bf info windows
             #3b3a36 fonts
-    add css minification to build process
+    add css minification to build process - completed 16-07
 
 Design Framework
     create mobile layout including layered map
@@ -29,7 +29,7 @@ Features
     create animated marker when selected
     implement deselection
     implement and populate infowindow from google maps
-    add 2nd API information to dom element
+    add 2nd API information to dom element - news site
     show list of locations
     implement select / deselect on locations list
     implement text based filter
