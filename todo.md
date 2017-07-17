@@ -11,7 +11,7 @@ Setup
             #b3c2bf info windows
             #3b3a36 fonts
     add css minification to build process - completed 16-07
-    add index.html copy to build and to use min using grunt copy and grunt processhtml
+    add index.html copy to build and to use min using grunt copy and grunt processhtml - completed 17-07
 
 Design Framework
     create mobile layout including layered map

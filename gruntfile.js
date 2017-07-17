@@ -32,6 +32,18 @@ module.exports = function(grunt) {
           ext: '.min.js'
         }]
       }
+    },
+    processhtml: {
+      options: {
+        data: {
+          message: 'Hello world!'
+        }
+      },
+      dist: {
+        files: {
+          'dest/index.html': ['dest/index.html']
+        }
+      }
     }
   });
 
@@ -39,8 +51,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-processhtml');
 
   // Default task(s).
-  grunt.registerTask('default', ['copy','uglify','cssmin']);
+  grunt.registerTask('default', ['copy','uglify','cssmin','processhtml']);
 
 };
