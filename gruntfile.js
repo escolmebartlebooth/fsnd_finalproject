@@ -3,6 +3,14 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    copy: {
+      main: {
+        expand: true,
+        cwd: 'src',
+        src: '**/*.html',
+        dest: 'dest',
+      },
+    },
     cssmin: {
         target: {
           files: [{
@@ -30,8 +38,9 @@ module.exports = function(grunt) {
   // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Default task(s).
-  grunt.registerTask('default', ['uglify','cssmin']);
+  grunt.registerTask('default', ['copy','uglify','cssmin']);
 
 };

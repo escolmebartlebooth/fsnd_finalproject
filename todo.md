@@ -11,10 +11,11 @@ Setup
             #b3c2bf info windows
             #3b3a36 fonts
     add css minification to build process - completed 16-07
+    add index.html copy to build and to use min using grunt copy and grunt processhtml
 
 Design Framework
     create mobile layout including layered map
-    create hanburger and show / hide of that
+    create hamburger and show / hide of that
     create desktop layout including layered map
 
 functional framework
