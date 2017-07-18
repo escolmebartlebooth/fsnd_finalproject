@@ -8,7 +8,7 @@ module.exports = function(grunt) {
         expand: true,
         cwd: 'src',
         src: '**/*.html',
-        dest: 'dest',
+        dest: 'build',
       },
     },
     cssmin: {
@@ -41,7 +41,7 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          'dest/index.html': ['dest/index.html']
+          'build/index.html': ['build/index.html']
         }
       }
     }
