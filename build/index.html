@@ -9,8 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Forum|Source+Code+Pro" rel="stylesheet">
 </head>
 <body>
-    <div class="map">
-            map object to be on level 0
+    <div id="map" class="map">
         </div>
     <div class="container">
         <div class="row">
@@ -21,5 +20,9 @@
             side bar left and right on level 1
         </div>
     </div>
+    <script src="js/app.min.js"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?libraries=geometry,drawing,places&v=3&callback=initMap&key=AIzaSyCcA1t9HLwYXaurzIl7oJ4B7RawQSei8Qc&language=en">
+    </script>
 </body>
 </html>

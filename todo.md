@@ -17,7 +17,8 @@ Design Framework
     create mobile layout including layered map - completed basic layering 18-07 and map 19-07
     create desktop layout including layered map
     play about with map height and width
-    create hamburger and show / hide of that
+    create hamburger and style input box on mob and desk
+    get show and hide to work for side bars left and right on mob and desk
 
 functional framework
     review knockout.js
@@ -26,7 +27,7 @@ functional framework
     review tests
 
 Features
-    create base map and default zoom location
+    create base map and default zoom location - completed 19-07
     create data and markers and show on initialisation
     create animated marker when selected
     implement deselection

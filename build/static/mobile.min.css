@@ -1,1 +1,1 @@
-.container{margin:0 auto;max-width:1200px;width:100%}.row{width:100%;display:flex;flex-wrap:wrap}.map{z-index:-1;position:absolute}.hamburger{width:8.333%}.thefilter{width:83.333%}body{font-family:Forum,cursive}input{font-family:'Source Code Pro',monospace}
+.container{margin:0 auto;max-width:1200px;width:100%}.row{width:100%;display:flex;flex-wrap:wrap}.map{z-index:-1;position:absolute;height:90%;width:90%}.hamburger{width:8.333%}.thefilter{width:83.333%}body{font-family:Forum,cursive;height:100%}input{font-family:'Source Code Pro',monospace}
