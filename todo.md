@@ -14,9 +14,10 @@ Setup
     add index.html copy to build and to use min using grunt copy and grunt processhtml - completed 17-07
 
 Design Framework
-    create mobile layout including layered map - completed basic layering 18-07
-    create hamburger and show / hide of that
+    create mobile layout including layered map - completed basic layering 18-07 and map 19-07
     create desktop layout including layered map
+    play about with map height and width
+    create hamburger and show / hide of that
 
 functional framework
     review knockout.js
