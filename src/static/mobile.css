@@ -1,7 +1,6 @@
 /* flex layout basics */
 .container {
     margin: 0 auto;
-    max-width: 1200px;
     width: 100%;
 }
 
@@ -14,8 +13,8 @@
 .map {
     z-index: -1;
     position: absolute;
-    height:90%;
-    width:90%;
+    height:96%;
+    width:98%;
 }
 
 .hamburger {
@@ -26,9 +25,9 @@
     width: 83.333%;
 }
 
-body {
+html, body {
     font-family: 'Forum', cursive;
-    height: 100%;
+    height: 98%;
 }
 
 input {
