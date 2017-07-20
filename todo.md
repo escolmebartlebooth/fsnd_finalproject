@@ -16,9 +16,9 @@ Setup
 Design Framework
     create mobile layout including layered map - completed basic layering 18-07 and map 19-07
     create desktop layout including layered map - completed basic layering 20-07 and map 20-07
-    play about with map height and width
     create hamburger and style input box on mob and desk
     get show and hide to work for side bars left and right on mob and desk
+    play about with map height and width
 
 functional framework
     review knockout.js
@@ -40,6 +40,6 @@ Features
     implement styled map
 
 Additional
-    additional API (train times?)
+    do neat visualisation with data from 3rd party API....
     allow change of zoom
     persist data
