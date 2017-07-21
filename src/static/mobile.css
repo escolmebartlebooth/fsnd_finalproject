@@ -13,24 +13,38 @@
 .map {
     z-index: -1;
     position: absolute;
-    height:96%;
-    width:98%;
+    height:100%;
+    width:100%;
 }
 
 .hamburger {
-    width: 8.333%;
+    width: 5%;
+    margin: 2% 2% 0;
+    font-size: large;
+}
+
+.hamline {
+    width: 100%;
+    height: 5px;
+    background-color: #3b3a36;
+    margin: 15% 0;
 }
 
 .thefilter {
     width: 83.333%;
+    margin: 2% 0 0;
+    font-size: medium;
 }
 
 html, body {
     font-family: 'Forum', cursive;
-    height: 98%;
+    height: 100%;
+    margin: 0;
+    color: #3b3a36;
 }
 
 input {
     font-family: 'Source Code Pro', monospace;
+    color: #3b3a36;
 }
 
