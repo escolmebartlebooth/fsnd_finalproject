@@ -17,7 +17,7 @@
         </div>
     <div class="container">
         <div class="row">
-            <div class="hamburger">
+            <div class="hamburger" data-bind="click: toggle">
                 <div class="hamline"></div>
                 <div class="hamline"></div>
                 <div class="hamline"></div>
@@ -25,9 +25,16 @@
             <input class="thefilter" type="text" placeholder="please filter the locations">
         </div>
         <div class="row">
-            side bar left and right on level 1
+            <div class="menubar" data-bind="css: {open: isOpen}">
+                menu placeholder
+            </div>
+            <div class="infobar">
+                info placeholder
+            </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
     <!-- build:js js/app.min.js -->
         <script src="js/app.js"></script>
     <!-- /build -->

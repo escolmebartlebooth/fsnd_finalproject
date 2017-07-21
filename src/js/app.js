@@ -5,6 +5,20 @@ var map;
 var initialCenter = {lat: 53.817265, lng: -1.5848782};
 
 
+// ko viewmodel for the list of locations
+function locationsVM() {
+    var self = this;
+
+    // ko variable to track menu bar state
+    self.isOpen = ko.observable(false),
+
+    // opens and closes menu bar based on state
+    self.toggle = function () {
+        self.isOpen(!self.isOpen());
+    };
+}
+
+
 // Initialise the Google Map
 function initMap() {
     // create the styled map
@@ -26,5 +40,5 @@ function initMap() {
     //map.setMapTypeId('styled_map');
 
     // Activate Knockout once the map is initialized
-    //ko.applyBindings(new cricketGroundsVM());
+    ko.applyBindings(new locationsVM());
 }

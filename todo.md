@@ -18,7 +18,7 @@ Design Framework
     create desktop layout including layered map - completed basic layering 20-07 and map 20-07
     create hamburger and style input box on mob and desk - completed 21-07
     play about with map height and width - completed (body margin) 21-07
-    get show and hide to work for side bars left and right on mob and desk
+    get show and hide to work for side bars left and right on mob and desk - completed 21-07
     fix build on media query on cssmin task
 
 functional framework
