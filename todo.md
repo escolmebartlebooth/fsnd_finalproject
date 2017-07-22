@@ -23,9 +23,9 @@ Design Framework
 
 functional framework
     review knockout.js
-    review async and defer
-    review error handling
-    review tests
+    review async and defer - use defer on old browsers not supporting async. async is as it is - completed 22-07
+    review error handling - reviewed, need to re-review completed 22-07
+    review tests - would need to use jasmine - one for the end - completed 22-07
 
 Features
     create base map and default zoom location - completed 19-07
@@ -39,8 +39,10 @@ Features
     implement text based filter
     implement drop down based filter
     implement styled map
+    add error handling for 404, response errors...
 
 Additional
     do neat visualisation with data from 3rd party API....
     allow change of zoom
     persist data
+    create unit tests with jasmine
