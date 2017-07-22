@@ -4,6 +4,21 @@ var map;
 // variable to hold the initial map center
 var initialCenter = {lat: 53.817265, lng: -1.5848782};
 
+// model for the list of locations
+function locationmodel(initialList) {
+    var self = this;
+    self.name = initialList.name;
+    self.ground = initialList.ground;
+    self.location = initialList.location;
+
+    // create a map marker for the location
+    self.marker = new google.maps.Marker({
+        position: {lat: self.location.lat, lng: self.location.lng},
+        /*icon: icons['ground'],*/
+        map: map,
+        title: self.name + " " + self.ground
+    });
+}
 
 // ko viewmodel for the list of locations
 function locationsVM() {
@@ -16,6 +31,29 @@ function locationsVM() {
     self.toggle = function () {
         self.isOpen(!self.isOpen());
     };
+
+    // manages locations
+    self.locations = ko.observableArray([]);
+
+    // load the initial data
+    var locations = [];
+    var location;
+    var bounds = new google.maps.LatLngBounds();
+    locationdata.forEach(function(data) {
+            // create the location data
+            location = new locationmodel(data);
+            locations.push(location);
+
+            // Extend the bounds to include this locations's location
+            bounds.extend(location.marker.position);
+        });
+
+        // Update the locations observable array
+        self.locations(locations);
+
+        // Instruct the map to resize itself to display all markers in the
+        // bounds object
+        map.fitBounds(bounds);
 }
 
 

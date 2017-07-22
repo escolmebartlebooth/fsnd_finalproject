@@ -29,7 +29,7 @@ functional framework
 
 Features
     create base map and default zoom location - completed 19-07
-    create data and markers and show on initialisation
+    create data and markers and show on initialisation - completed 22-07
     create animated marker when selected
     implement deselection
     implement and populate infowindow from google maps
