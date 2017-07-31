@@ -22,7 +22,7 @@ Design Framework
     fix build on media query on cssmin task
 
 functional framework
-    review knockout.js
+    review knockout.js -  completed 24-07
     review async and defer - use defer on old browsers not supporting async. async is as it is - completed 22-07
     review error handling - reviewed, need to re-review completed 22-07
     review tests - would need to use jasmine - one for the end - completed 22-07
@@ -30,15 +30,16 @@ functional framework
 Features
     create base map and default zoom location - completed 19-07
     create data and markers and show on initialisation - completed 22-07
+    fix inability to select marker re z-index - completed 31-07
     create animated marker when selected
-    implement deselection
-    implement and populate infowindow from google maps
-    add 2nd API information to dom element - news site
     show list of locations
+    implement and populate infowindow from google maps
+    implement deselection
     implement select / deselect on locations list
     implement text based filter
     implement drop down based filter
     implement styled map
+    add 2nd API information to dom element - news site
     add error handling for 404, response errors...
 
 Additional

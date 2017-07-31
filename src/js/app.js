@@ -4,6 +4,13 @@ var map;
 // variable to hold the initial map center
 var initialCenter = {lat: 53.817265, lng: -1.5848782};
 
+// icons for markers
+var iconroot = 'http://maps.google.com/mapfiles/ms/icons/'
+var icons = {
+    locationselected: iconroot + 'ylw-pushpin.png',
+    locationnormal: iconroot + 'red-pushpin.png'
+}
+
 // model for the list of locations
 function locationmodel(initialList) {
     var self = this;
@@ -14,10 +21,29 @@ function locationmodel(initialList) {
     // create a map marker for the location
     self.marker = new google.maps.Marker({
         position: {lat: self.location.lat, lng: self.location.lng},
-        /*icon: icons['ground'],*/
+        icon: icons['locationnormal'],
         map: map,
         title: self.name + " " + self.ground
     });
+
+    // function to animate marker
+    self.selected = function() {
+        if (self.marker.getAnimation() === null) {
+            self.marker.setAnimation(google.maps.Animation.BOUNCE);
+            self.marker.icon = icons['locationselected'];
+        } else {
+            self.marker.setAnimation(null);
+            self.marker.icon = icons['location'];
+        }
+    }
+
+    // handle the marker being clicked
+    self.markerClick = function() {
+        self.selected();
+    }
+
+    // bind event
+    self.marker.addListener('click', self.markerClick);
 }
 
 // ko viewmodel for the list of locations
@@ -25,7 +51,7 @@ function locationsVM() {
     var self = this;
 
     // ko variable to track menu bar state
-    self.isOpen = ko.observable(false),
+    self.isOpen = ko.observable(false);
 
     // opens and closes menu bar based on state
     self.toggle = function () {
@@ -48,12 +74,12 @@ function locationsVM() {
             bounds.extend(location.marker.position);
         });
 
-        // Update the locations observable array
-        self.locations(locations);
+    // Update the locations observable array
+    self.locations(locations);
 
-        // Instruct the map to resize itself to display all markers in the
-        // bounds object
-        map.fitBounds(bounds);
+    // Instruct the map to resize itself to display all markers in the
+    // bounds object
+    map.fitBounds(bounds);
 }
 
 
