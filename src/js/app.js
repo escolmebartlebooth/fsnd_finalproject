@@ -33,7 +33,7 @@ function locationmodel(initialList) {
             self.marker.icon = icons['locationselected'];
         } else {
             self.marker.setAnimation(null);
-            self.marker.icon = icons['location'];
+            self.marker.icon = icons['locationnormal'];
         }
     }
 
