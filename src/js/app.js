@@ -25,25 +25,6 @@ function locationmodel(initialList) {
         map: map,
         title: self.name + " " + self.ground
     });
-
-    // function to animate marker
-    self.selected = function() {
-        if (self.marker.getAnimation() === null) {
-            self.marker.setAnimation(google.maps.Animation.BOUNCE);
-            self.marker.icon = icons['locationselected'];
-        } else {
-            self.marker.setAnimation(null);
-            self.marker.icon = icons['locationnormal'];
-        }
-    }
-
-    // handle the marker being clicked
-    self.markerClick = function() {
-        self.selected();
-    }
-
-    // bind event
-    self.marker.addListener('click', self.markerClick);
 }
 
 // ko viewmodel for the list of locations
@@ -60,6 +41,20 @@ function locationsVM() {
 
     // manages locations
     self.locations = ko.observableArray([]);
+    self.selectedlocation = null;
+
+    // handle the marker being clicked
+    self.markerClick = function() {
+        if (self.selectedlocation !== null) {
+            self.selectedlocation.setAnimation(null);
+            self.selectedlocation.icon = icons['locationnormal'];
+        }
+
+        self.selectedlocation = this;
+
+        self.selectedlocation.setAnimation(google.maps.Animation.BOUNCE);
+        self.selectedlocation.icon = icons['locationselected'];
+    }
 
     // load the initial data
     var locations = [];
@@ -68,6 +63,9 @@ function locationsVM() {
     locationdata.forEach(function(data) {
             // create the location data
             location = new locationmodel(data);
+
+            // bind event
+            location.marker.addListener('click', self.markerClick);
             locations.push(location);
 
             // Extend the bounds to include this locations's location

@@ -33,9 +33,11 @@ Features
     fix inability to select marker re z-index - completed 31-07
     create animated marker when selected - completed 31-07
     add css to mobile for zindex - completed 02-08
+    implement deselection - completed 02-08
+    implement re-zoom on css change
+    make hamburger and filter box right sized on screen size
     show list of locations
     implement and populate infowindow from google maps
-    implement deselection
     implement select / deselect on locations list
     implement text based filter
     implement drop down based filter
