@@ -32,6 +32,7 @@ Features
     create data and markers and show on initialisation - completed 22-07
     fix inability to select marker re z-index - completed 31-07
     create animated marker when selected - completed 31-07
+    add css to mobile for zindex - completed 02-08
     show list of locations
     implement and populate infowindow from google maps
     implement deselection
