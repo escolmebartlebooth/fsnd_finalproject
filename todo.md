@@ -34,6 +34,7 @@ Features
     create animated marker when selected - completed 31-07
     add css to mobile for zindex - completed 02-08
     implement deselection - completed 02-08
+    implement deselection again and make observable
     implement re-zoom on css change
     make hamburger and filter box right sized on screen size
     show list of locations

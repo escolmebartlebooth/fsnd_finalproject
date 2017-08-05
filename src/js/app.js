@@ -41,19 +41,31 @@ function locationsVM() {
 
     // manages locations
     self.locations = ko.observableArray([]);
-    self.selectedlocation = null;
+    self.selectedlocation = ko.observable(null);
+
+    self.locationAnimate = function() {
+        self.selectedlocation().setAnimation(google.maps.Animation.BOUNCE);
+        self.selectedlocation().icon = icons['locationselected'];
+    }
+
+    self.locationUnAnimate = function() {
+        self.selectedlocation().setAnimation(null);
+        self.selectedlocation().icon = icons['locationnormal'];
+    }
 
     // handle the marker being clicked
     self.markerClick = function() {
-        if (self.selectedlocation !== null) {
-            self.selectedlocation.setAnimation(null);
-            self.selectedlocation.icon = icons['locationnormal'];
+        if (self.selectedlocation() === this) {
+            self.locationUnAnimate();
+            self.selectedlocation(null);
+        } else if (self.selectedlocation() !== null) {
+            self.locationUnAnimate();
+            self.selectedlocation(this);
+            self.locationAnimate();
+        } else {
+            self.selectedlocation(this);
+            self.locationAnimate();
         }
-
-        self.selectedlocation = this;
-
-        self.selectedlocation.setAnimation(google.maps.Animation.BOUNCE);
-        self.selectedlocation.icon = icons['locationselected'];
     }
 
     // load the initial data
