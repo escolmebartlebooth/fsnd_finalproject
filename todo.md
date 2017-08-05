@@ -19,7 +19,7 @@ Design Framework
     create hamburger and style input box on mob and desk - completed 21-07
     play about with map height and width - completed (body margin) 21-07
     get show and hide to work for side bars left and right on mob and desk - completed 21-07
-    fix build on media query on cssmin task
+    fix build on media query on cssmin task - completed 05-08
 
 functional framework
     review knockout.js -  completed 24-07
