@@ -39,6 +39,16 @@ function locationsVM() {
         self.isOpen(!self.isOpen());
     };
 
+    self.mapStyle = ko.observable()
+    // manage mapstyle
+    self.toggleMap = function() {
+        if (map.getMapTypeId() === 'roadmap') {
+            map.setMapTypeId('styled_map');
+        } else {
+            map.setMapTypeId('roadmap');
+        }
+    }
+
     // manages locations
     self.locations = ko.observableArray([]);
     self.selectedlocation = ko.observable(null);
@@ -105,8 +115,8 @@ function locationsVM() {
 // Initialise the Google Map
 function initMap() {
     // create the styled map
-    //var styledMapType = new google.maps.StyledMapType(cricketgroundmapstyle,
-        //{name: 'Cricket Gounds'});
+    var styledMapType = new google.maps.StyledMapType(mapstyle,
+        {name: 'locations'});
     // initialise the map
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 12,
@@ -119,8 +129,8 @@ function initMap() {
     });
 
     //Associate the styled map with the MapTypeId and set it to display.
-    //map.mapTypes.set('styled_map', styledMapType);
-    //map.setMapTypeId('styled_map');
+    map.mapTypes.set('styled_map', styledMapType);
+    map.setMapTypeId('styled_map');
 
     // Activate Knockout once the map is initialized
     ko.applyBindings(new locationsVM());

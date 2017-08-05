@@ -37,18 +37,19 @@ Features
     implement deselection again and make observable - completed 05-08
     show list of locations - completed 05-08
     implement select / deselect on locations list - completed 05-08
-    style locations list
+        implement styled map - completed 05-08
+        style locations list - completed 05-08
     implement and populate infowindow from google maps
-    implement text based filter
+        implement text based filter
     implement drop down based filter
-    implement styled map
-    add 2nd API information to dom element - news site
+        add 2nd API information to dom element - news site
     add error handling for 404, response errors...
-    implement re-zoom on css change
+        implement re-zoom on css change
     make hamburger and filter box right sized on screen size
 
 Additional
     do neat visualisation with data from 3rd party API....
-    allow change of zoom
+        allow change of zoom
     persist data
-    create unit tests with jasmine
+
+        create unit tests with jasmine
