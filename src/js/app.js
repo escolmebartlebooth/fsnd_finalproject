@@ -53,19 +53,28 @@ function locationsVM() {
         self.selectedlocation().icon = icons['locationnormal'];
     }
 
-    // handle the marker being clicked
-    self.markerClick = function() {
-        if (self.selectedlocation() === this) {
+    self.makeselection = function(marker) {
+        if (self.selectedlocation() === marker) {
             self.locationUnAnimate();
             self.selectedlocation(null);
         } else if (self.selectedlocation() !== null) {
             self.locationUnAnimate();
-            self.selectedlocation(this);
+            self.selectedlocation(marker);
             self.locationAnimate();
         } else {
-            self.selectedlocation(this);
+            self.selectedlocation(marker);
             self.locationAnimate();
         }
+    }
+
+    // handle the marker being clicked
+    self.markerClick = function() {
+        self.makeselection(this);
+    }
+
+    // handle the location being selected
+    self.clicklocation = function() {
+        self.makeselection(this.marker);
     }
 
     // load the initial data

@@ -29,7 +29,7 @@
                 <div>Locations List</div>
                 <hr>
                 <div data-bind="foreach: locations">
-                    <div data-bind="text: name"></div>
+                    <div data-bind="text: name, click: $root.clicklocation"></div>
                 </div>
                 <hr>
             </div>

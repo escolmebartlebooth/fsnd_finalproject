@@ -36,7 +36,7 @@ Features
     implement deselection - completed 02-08
     implement deselection again and make observable - completed 05-08
     show list of locations - completed 05-08
-    implement select / deselect on locations list
+    implement select / deselect on locations list - completed 05-08
     style locations list
     implement and populate infowindow from google maps
     implement text based filter
