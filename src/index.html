@@ -26,7 +26,12 @@
         </div>
         <div class="row">
             <div class="menubar" data-bind="css: {open: isOpen}">
-                menu placeholder
+                <div>Locations List</div>
+                <hr>
+                <div data-bind="foreach: locations">
+                    <div data-bind="text: name"></div>
+                </div>
+                <hr>
             </div>
             <div class="infobar">
                 info placeholder

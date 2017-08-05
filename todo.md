@@ -34,17 +34,18 @@ Features
     create animated marker when selected - completed 31-07
     add css to mobile for zindex - completed 02-08
     implement deselection - completed 02-08
-    implement deselection again and make observable
-    implement re-zoom on css change
-    make hamburger and filter box right sized on screen size
-    show list of locations
-    implement and populate infowindow from google maps
+    implement deselection again and make observable - completed 05-08
+    show list of locations - completed 05-08
     implement select / deselect on locations list
+    style locations list
+    implement and populate infowindow from google maps
     implement text based filter
     implement drop down based filter
     implement styled map
     add 2nd API information to dom element - news site
     add error handling for 404, response errors...
+    implement re-zoom on css change
+    make hamburger and filter box right sized on screen size
 
 Additional
     do neat visualisation with data from 3rd party API....
