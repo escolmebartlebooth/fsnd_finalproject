@@ -22,10 +22,12 @@
         </div>
         <div class="row">
             <div class="menubar" data-bind="css: {open: isOpen}">
-                <div>Locations List</div>
+                <h3>Options</h3>
+                <hr>
+                    <div class="location" data-bind="click: toggleMap">Toggle Map Style</div>
                 <hr>
                 <div data-bind="foreach: locations">
-                    <div data-bind="text: name, click: $root.clicklocation"></div>
+                    <div class="location" data-bind="text: name, click: $root.clicklocation"></div>
                 </div>
                 <hr>
             </div>
@@ -37,6 +39,7 @@
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
     <script src="js/locations.min.js"></script>
+    <script src="js/mapstyle.min.js"></script>
     <script src="js/app.min.js"></script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?libraries=geometry,drawing,places&v=3&callback=initMap&key=AIzaSyCcA1t9HLwYXaurzIl7oJ4B7RawQSei8Qc&language=en">

@@ -39,17 +39,17 @@ Features
     implement select / deselect on locations list - completed 05-08
         implement styled map - completed 05-08
         style locations list - completed 05-08
-    implement and populate infowindow from google maps
+    implement and populate infowindow from google maps - completed 06-08
         implement text based filter
     implement drop down based filter
-        add 2nd API information to dom element - news site
+        add 2nd API information to dom element or infowindow - eg. news site
     add error handling for 404, response errors...
-        implement re-zoom on css change
-    make hamburger and filter box right sized on screen size
+        style infowindow
 
 Additional
     do neat visualisation with data from 3rd party API....
         allow change of zoom
     persist data
-
+        implement re-zoom on css change
+    make hamburger and filter box right sized on screen size
         create unit tests with jasmine

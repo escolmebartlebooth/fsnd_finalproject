@@ -17,14 +17,21 @@ function locationmodel(initialList) {
     self.name = initialList.name;
     self.ground = initialList.ground;
     self.location = initialList.location;
+    self.champions = initialList.champions;
 
     // create a map marker for the location
     self.marker = new google.maps.Marker({
         position: {lat: self.location.lat, lng: self.location.lng},
         icon: icons['locationnormal'],
         map: map,
-        title: self.name + " " + self.ground
+        title: self.name + " " + self.ground,
+        location: self
     });
+
+    // create an infowindow for the marker
+    self.infowindow = new google.maps.InfoWindow({
+          content: '<div><h3>'+self.name+':<h3><p># of championships: '+self.champions+'<p></div>'
+        });
 }
 
 // ko viewmodel for the list of locations
@@ -56,11 +63,13 @@ function locationsVM() {
     self.locationAnimate = function() {
         self.selectedlocation().setAnimation(google.maps.Animation.BOUNCE);
         self.selectedlocation().icon = icons['locationselected'];
+        self.selectedlocation().location.infowindow.open(map,self.selectedlocation());
     }
 
     self.locationUnAnimate = function() {
         self.selectedlocation().setAnimation(null);
         self.selectedlocation().icon = icons['locationnormal'];
+        self.selectedlocation().location.infowindow.close();
     }
 
     self.makeselection = function(marker) {
