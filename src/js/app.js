@@ -96,6 +96,18 @@ function locationsVM() {
         self.makeselection(this.marker);
     }
 
+    // handle the filter
+    self.filtervalue = ko.observable("");
+
+    self.dofilter = function() {
+        console.log(self.filtervalue());
+        // react to all or only > 3
+        // change init for building locations
+        // run through each location to find match with re
+        // update locations based on filter...could try a visible flag on locations
+        // if value is "" then show all
+    }
+
     // load the initial data
     var locations = [];
     var location;
@@ -119,7 +131,6 @@ function locationsVM() {
     // bounds object
     map.fitBounds(bounds);
 }
-
 
 // Initialise the Google Map
 function initMap() {

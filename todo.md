@@ -40,11 +40,13 @@ Features
         implement styled map - completed 05-08
         style locations list - completed 05-08
     implement and populate infowindow from google maps - completed 06-08
-        implement text based filter
-    implement drop down based filter
-        add 2nd API information to dom element or infowindow - eg. news site
-    add error handling for 404, response errors...
-        style infowindow
+        implement text based filter - capture input value - completed 08-08
+        implement text based filter - make selection
+        implement text based filter - do filter
+        implement text based filter - tidy up
+    add 2nd API information to dom element or infowindow - eg. news site
+        add error handling for 404, response errors...
+    style infowindow
 
 Additional
     do neat visualisation with data from 3rd party API....
