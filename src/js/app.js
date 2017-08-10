@@ -38,6 +38,30 @@ function locationmodel(initialList) {
 function locationsVM() {
     var self = this;
 
+    self.init = function() {
+        // load the initial data
+        var locations = [];
+        var location;
+        var bounds = new google.maps.LatLngBounds();
+        locationdata.forEach(function(data) {
+                // create the location data
+                location = new locationmodel(data);
+
+                // bind event
+                location.marker.addListener('click', self.markerClick);
+                locations.push(location);
+
+                // Extend the bounds to include this locations's location
+                bounds.extend(location.marker.position);
+            });
+
+        // Update the locations observable array
+        self.locations(locations);
+
+        // Instruct the map to resize itself to display all markers in the
+        // bounds object
+        map.fitBounds(bounds);
+    }
     // ko variable to track menu bar state
     self.isOpen = ko.observable(false);
 
@@ -108,29 +132,10 @@ function locationsVM() {
         // if value is "" then show all
     }
 
-    // load the initial data
-    var locations = [];
-    var location;
-    var bounds = new google.maps.LatLngBounds();
-    locationdata.forEach(function(data) {
-            // create the location data
-            location = new locationmodel(data);
-
-            // bind event
-            location.marker.addListener('click', self.markerClick);
-            locations.push(location);
-
-            // Extend the bounds to include this locations's location
-            bounds.extend(location.marker.position);
-        });
-
-    // Update the locations observable array
-    self.locations(locations);
-
-    // Instruct the map to resize itself to display all markers in the
-    // bounds object
-    map.fitBounds(bounds);
+    self.init();
 }
+
+
 
 // Initialise the Google Map
 function initMap() {
