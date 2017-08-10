@@ -18,6 +18,7 @@ function locationmodel(initialList) {
     self.ground = initialList.ground;
     self.location = initialList.location;
     self.champions = initialList.champions;
+    self.filtered = true;
 
     // create a map marker for the location
     self.marker = new google.maps.Marker({
@@ -123,13 +124,24 @@ function locationsVM() {
     // handle the filter
     self.filtervalue = ko.observable("");
 
-    self.dofilter = function() {
-        console.log(self.filtervalue());
-        // react to all or only > 3
-        // change init for building locations
+    self.applyfilter = function () {
+        reg = new RegExp(self.filtervalue(),'i');
+        console.log(reg.test(self.locations()[0].name));
         // run through each location to find match with re
-        // update locations based on filter...could try a visible flag on locations
-        // if value is "" then show all
+        // need to update list
+        // need to reset
+        ko.utils.self.locations().forEach(function(data) {
+            if (!reg.test(data.name)) {
+                data.marker.setMap(null);
+                data.filtered = false;
+            }
+        })
+    }
+
+    self.dofilter = function() {
+        if (self.filtervalue().length > 2) {
+            self.applyfilter();
+        }
     }
 
     self.init();

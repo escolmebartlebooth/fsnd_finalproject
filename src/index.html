@@ -31,7 +31,9 @@
                     <div class="location" data-bind="click: toggleMap">Toggle Map Style</div>
                 <hr>
                 <div data-bind="foreach: locations">
-                    <div class="location" data-bind="text: name, click: $root.clicklocation"></div>
+                    <div data-bind="if: filtered">
+                        <div class="location" data-bind="text: name, click: $root.clicklocation"></div>
+                    </div>
                 </div>
                 <hr>
             </div>
