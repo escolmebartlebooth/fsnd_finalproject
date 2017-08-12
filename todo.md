@@ -41,17 +41,19 @@ Features
         style locations list - completed 05-08
     implement and populate infowindow from google maps - completed 06-08
         implement text based filter - capture input value - completed 08-08
-        implement text based filter - make selection
-        implement text based filter - do filter
-        implement text based filter - tidy up
-    add 2nd API information to dom element or infowindow - eg. news site
-        add error handling for 404, response errors...
-    style infowindow
+        implement text based filter - make selection - completed 10-08
+        implement text based filter - do filter -- investigate observable on array
+        implement text based filter - tidy up -- make consistent and allow unfilter
+    add toggle open on map or Options
+        add 2nd API information to dom element or infowindow - eg. news site
+        allow show / hide
+        style infowindow and make appear below options
+    add error handling for 404, response errors
 
 Additional
     do neat visualisation with data from 3rd party API....
         allow change of zoom
     persist data
         implement re-zoom on css change
-    make hamburger and filter box right sized on screen size
+    make hamburger and filter box right sized on screen size adjustment
         create unit tests with jasmine

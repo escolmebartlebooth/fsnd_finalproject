@@ -130,10 +130,10 @@ function locationsVM() {
         // run through each location to find match with re
         // need to update list
         // need to reset
-        ko.utils.self.locations().forEach(function(data) {
+        self.locations().forEach(function(data,index) {
             if (!reg.test(data.name)) {
-                data.marker.setMap(null);
-                data.filtered = false;
+                self.locations()[index].marker.setMap(null);
+                self.locations()[index].filtered = false;
             }
         })
     }

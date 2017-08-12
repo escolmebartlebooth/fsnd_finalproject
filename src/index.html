@@ -17,7 +17,7 @@
         </div>
     <div class="container">
         <div class="optionscontainer row">
-]           <div class="hamburger" data-bind="click: toggle">
+            <div class="hamburger" data-bind="click: toggle">
                 <div class="hamline"></div>
                 <div class="hamline"></div>
                 <div class="hamline"></div>
@@ -26,7 +26,7 @@
         </div>
         <div class="row">
             <div class="menubar" data-bind="css: {open: isOpen}">
-                <h3>Options</h3>
+                <h3 data-bind="click: toggle">Options</h3>
                 <hr>
                     <div class="location" data-bind="click: toggleMap">Toggle Map Style</div>
                 <hr>
@@ -37,6 +37,8 @@
                 </div>
                 <hr>
             </div>
+        </div>
+        <div class="row">
             <div class="infobar">
                 info placeholder
             </div>
