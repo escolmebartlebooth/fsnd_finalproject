@@ -4,7 +4,7 @@ var mapstyle = [
         "elementType": "labels.text.fill",
         "stylers": [
             {
-                "color": "#ffffff"
+                "color": "#3b3a36"
             }
         ]
     },
@@ -31,7 +31,7 @@ var mapstyle = [
         "elementType": "geometry.fill",
         "stylers": [
             {
-                "color": "#c9323b"
+                "color": "#c0dfd9"
             }
         ]
     },
@@ -40,7 +40,7 @@ var mapstyle = [
         "elementType": "geometry.stroke",
         "stylers": [
             {
-                "color": "#42f453"
+                "color": "#e9ece5"
             },
             {
                 "weight": 1.2
@@ -91,7 +91,7 @@ var mapstyle = [
         "elementType": "geometry",
         "stylers": [
             {
-                "color": "#c9323b"
+                "color": "#e9ece5"
             }
         ]
     },
@@ -100,7 +100,7 @@ var mapstyle = [
         "elementType": "geometry",
         "stylers": [
             {
-                "color": "#99282f"
+                "color": "#b3c2bf"
             }
         ]
     },
@@ -118,7 +118,7 @@ var mapstyle = [
         "elementType": "geometry.fill",
         "stylers": [
             {
-                "color": "#99282f"
+                "color": "#b3c2bf"
             }
         ]
     },
@@ -127,7 +127,7 @@ var mapstyle = [
         "elementType": "geometry.stroke",
         "stylers": [
             {
-                "color": "#99282f"
+                "color": "#b3c2bf"
             }
         ]
     },
@@ -136,7 +136,7 @@ var mapstyle = [
         "elementType": "geometry",
         "stylers": [
             {
-                "color": "#99282f"
+                "color": "#b3c2bf"
             }
         ]
     },
@@ -145,7 +145,7 @@ var mapstyle = [
         "elementType": "geometry",
         "stylers": [
             {
-                "color": "#99282f"
+                "color": "#b3c2bf"
             }
         ]
     },
@@ -154,7 +154,7 @@ var mapstyle = [
         "elementType": "geometry",
         "stylers": [
             {
-                "color": "#99282f"
+                "color": "#b3c2bf"
             }
         ]
     },
@@ -163,7 +163,7 @@ var mapstyle = [
         "elementType": "geometry",
         "stylers": [
             {
-                "color": "#090228"
+                "color": "#c0dfd9"
             }
         ]
     }
