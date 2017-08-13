@@ -42,9 +42,9 @@ Features
     implement and populate infowindow from google maps - completed 06-08
         implement text based filter - capture input value - completed 08-08
         implement text based filter - make selection - completed 10-08
-        implement text based filter - do filter -- investigate observable on array
-        implement text based filter - tidy up -- make consistent and allow unfilter
-    add toggle open on map or Options
+        implement text based filter - do filter -- investigate observable on array - completed 13-08
+        implement text based filter - tidy up -- make consistent and allow unfilter - completed 13-08
+    add toggle open on map or Options - completed 13-08
         add 2nd API information to dom element or infowindow - eg. news site
         allow show / hide
         style infowindow and make appear below options

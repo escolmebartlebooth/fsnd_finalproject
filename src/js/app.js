@@ -18,7 +18,7 @@ function locationmodel(initialList) {
     self.ground = initialList.ground;
     self.location = initialList.location;
     self.champions = initialList.champions;
-    self.filtered = true;
+    self.filtered = ko.observable(true);
 
     // create a map marker for the location
     self.marker = new google.maps.Marker({
@@ -123,24 +123,35 @@ function locationsVM() {
 
     // handle the filter
     self.filtervalue = ko.observable("");
+    self.filterOn = ko.observable(false);
 
     self.applyfilter = function () {
         reg = new RegExp(self.filtervalue(),'i');
-        console.log(reg.test(self.locations()[0].name));
-        // run through each location to find match with re
-        // need to update list
-        // need to reset
+        self.filterOn(true);
         self.locations().forEach(function(data,index) {
             if (!reg.test(data.name)) {
                 self.locations()[index].marker.setMap(null);
-                self.locations()[index].filtered = false;
+                self.locations()[index].filtered(false);
+            } else {
+                self.locations()[index].marker.setMap(map);
+                self.locations()[index].filtered(true);
             }
+        })
+    }
+
+    self.removefilter = function () {
+        self.filterOn(false);
+        self.locations().forEach(function(data,index) {
+            self.locations()[index].marker.setMap(map);
+            self.locations()[index].filtered(true);
         })
     }
 
     self.dofilter = function() {
         if (self.filtervalue().length > 2) {
             self.applyfilter();
+        } else if (self.filterOn()) {
+            self.removefilter();
         }
     }
 
