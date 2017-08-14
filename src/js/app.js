@@ -11,6 +11,51 @@ var icons = {
     locationnormal: iconroot + 'red-pushpin.png'
 }
 
+// helper for ny times integration
+var getNYT = function(location) {
+    console.log(location);
+    var nyturl = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+    nyturl += '?' + $.param({
+    'api-key': "648ff5452e49454b855476afbc2d1b9b",
+    'q': location,
+    'sort': 'newest',
+    'output':'jsonp'
+    });
+    $.getJSON(nyturl, function(result) {
+    var items = [];
+    $.each( result.response.docs, function( key, val ) {
+        items.push([key,val.headline.main])
+        console.log(items);
+        return items;
+        });
+    }).fail(function() {
+        console.log("error in NYT API Call");
+        return false;
+    });
+}
+
+// helper for wikipedia integration
+var getWiki = function(location) {
+    console.log(location);
+    var wikiURL = "https://en.wikipedia.org/w/api.php?"
+    wikiURL += $.param({
+        'action': 'query',
+        'list': 'search',
+        'srsearch': location,
+        'format': 'json',
+        'callback': 'wikiCallback'
+    });
+
+    $.ajax({
+        url: wikiURL,
+        dataType: "jsonp",
+        success: function(response){
+            console.log(response);
+            return response;
+        }
+    });
+}
+
 // model for the list of locations
 function locationmodel(initialList) {
     var self = this;
@@ -19,6 +64,8 @@ function locationmodel(initialList) {
     self.location = initialList.location;
     self.champions = initialList.champions;
     self.filtered = ko.observable(true);
+    self.news = getNYT(self.name);
+    self.wiki = getWiki(self.name);
 
     // create a map marker for the location
     self.marker = new google.maps.Marker({

@@ -45,9 +45,12 @@ Features
         implement text based filter - do filter -- investigate observable on array - completed 13-08
         implement text based filter - tidy up -- make consistent and allow unfilter - completed 13-08
     add toggle open on map or Options - completed 13-08
-        add 2nd API information to dom element or infowindow - eg. news site
-        allow show / hide
-        style infowindow and make appear below options
+        do basic integration to 2nd API - NYT - completed 14-08
+        do basic integration to 3rd API - Wiki - completed 14-08
+        fix CORS and check output of both
+        decide how best to add to infowindow or dom element and add it
+        allow show / hide news / articles
+        style infowindow and make appear below options - or stick with info window only
     add error handling for 404, response errors
 
 Additional
