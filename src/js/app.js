@@ -15,13 +15,23 @@ var icons = {
 var getNYT = function(location) {
     console.log(location);
     var nyturl = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
-    nyturl += '?' + $.param({
-    'api-key': "648ff5452e49454b855476afbc2d1b9b",
-    'q': location,
-    'sort': 'newest',
-    'output':'jsonp'
+    $.ajax({
+        'type': 'GET',
+        'url': nyturl,
+        data: {
+            'q': location,
+            'sort': 'newest',
+            'response-format': "jsonp",
+            'api-key': '648ff5452e49454b855476afbc2d1b9b',
+            'callback': 'svc_search_v2_articlesearch'
+        },
+        success: function(data) {
+            // passed function object for data processing
+            console.log(data.response.docs);
+        }
     });
-    $.getJSON(nyturl, function(result) {
+
+    /*$.getJSON(nyturl, function(result) {
     var items = [];
     $.each( result.response.docs, function( key, val ) {
         items.push([key,val.headline.main])
@@ -31,7 +41,7 @@ var getNYT = function(location) {
     }).fail(function() {
         console.log("error in NYT API Call");
         return false;
-    });
+    });*/
 }
 
 // helper for wikipedia integration
