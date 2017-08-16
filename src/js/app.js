@@ -13,7 +13,6 @@ var icons = {
 
 // helper for ny times integration
 var getNYT = function(location) {
-    console.log(location);
     var nyturl = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
     $.ajax({
         'type': 'GET',
@@ -46,7 +45,6 @@ var getNYT = function(location) {
 
 // helper for wikipedia integration
 var getWiki = function(location) {
-    console.log(location);
     var wikiURL = "https://en.wikipedia.org/w/api.php?"
     wikiURL += $.param({
         'action': 'query',
@@ -74,8 +72,8 @@ function locationmodel(initialList) {
     self.location = initialList.location;
     self.champions = initialList.champions;
     self.filtered = ko.observable(true);
-    self.news = getNYT(self.name);
-    self.wiki = getWiki(self.name);
+    self.news = "";
+    self.wiki = "";
 
     // create a map marker for the location
     self.marker = new google.maps.Marker({
@@ -143,6 +141,12 @@ function locationsVM() {
     self.selectedlocation = ko.observable(null);
 
     self.locationAnimate = function() {
+        if (self.selectedlocation().location.wiki === "") {
+            self.selectedlocation().location.wiki = getWiki(self.selectedlocation().location.name);
+            }
+        if (self.selectedlocation().location.news === "") {
+            self.selectedlocation().location.news = getNYT(self.selectedlocation().location.name);
+            }
         self.selectedlocation().setAnimation(google.maps.Animation.BOUNCE);
         self.selectedlocation().icon = icons['locationselected'];
         self.selectedlocation().location.infowindow.open(map,self.selectedlocation());
