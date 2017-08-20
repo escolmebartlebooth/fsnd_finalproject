@@ -26,7 +26,8 @@ var getNYT = function(location) {
         },
         success: function(data) {
             // passed function object for data processing
-            console.log(data.response.docs);
+            console.log(data.response.docs[0].snippet);
+            return data.respons.docs;
         }
     });
 
@@ -58,8 +59,8 @@ var getWiki = function(location) {
         url: wikiURL,
         dataType: "jsonp",
         success: function(response){
-            console.log(response);
-            return response;
+            console.log(response.query.search);
+            return response.query.search;
         }
     });
 }
@@ -139,6 +140,8 @@ function locationsVM() {
     // manages locations
     self.locations = ko.observableArray([]);
     self.selectedlocation = ko.observable(null);
+    self.selectednews = ko.observable();
+    self.selectedwiki = ko.observable();
 
     self.locationAnimate = function() {
         if (self.selectedlocation().location.wiki === "") {
@@ -147,6 +150,10 @@ function locationsVM() {
         if (self.selectedlocation().location.news === "") {
             self.selectedlocation().location.news = getNYT(self.selectedlocation().location.name);
             }
+        self.selectednews() = self.selectedlocation().location.news;
+        self.selectedwiki() = self.selectedlocation().location.wiki;
+        console.log(self.selectednews());
+        console.log(self.selectedwiki());
         self.selectedlocation().setAnimation(google.maps.Animation.BOUNCE);
         self.selectedlocation().icon = icons['locationselected'];
         self.selectedlocation().location.infowindow.open(map,self.selectedlocation());
@@ -215,11 +222,12 @@ function locationsVM() {
             self.removefilter();
         }
     }
-
     self.init();
 }
 
-
+function mapError() {
+    console.log("called")
+}
 
 // Initialise the Google Map
 function initMap() {

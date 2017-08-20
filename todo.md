@@ -50,9 +50,16 @@ Features
         fix CORS and check output of both - wasn't CORS was rate limiting - completed 15-08
         move get info to click and check if info already present first... - completed 16-08
         decide how best to add to infowindow or dom element and add it
+            selected info observable
+            open and close on dom with css
+
         allow show / hide news / articles
         style infowindow and make appear below options - or stick with info window only
     add error handling for 404, response errors
+        g maps basic - completed 20-08
+        g maps trap error and show
+        other apis basic
+        other apis trap error and show
 
 Additional
     do neat visualisation with data from 3rd party API....
