@@ -37,6 +37,12 @@ input {
 }
 
 @media screen and (min-width: 401px) {
+    .infowin {
+        font-family: 'Forum', cursive;
+        font-size: medium;
+        color: #3b3a36;
+    }
+
     .optionscontainer{
         display: flex;
         z-index: 1;

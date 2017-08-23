@@ -11,60 +11,6 @@ var icons = {
     locationnormal: iconroot + 'red-pushpin.png'
 }
 
-// helper for ny times integration
-var getNYT = function(location) {
-    var nyturl = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
-    $.ajax({
-        'type': 'GET',
-        'url': nyturl,
-        data: {
-            'q': location,
-            'sort': 'newest',
-            'response-format': "jsonp",
-            'api-key': '648ff5452e49454b855476afbc2d1b9b',
-            'callback': 'svc_search_v2_articlesearch'
-        },
-        success: function(data) {
-            // passed function object for data processing
-            console.log(data.response.docs[0].snippet);
-            return data.respons.docs;
-        }
-    });
-
-    /*$.getJSON(nyturl, function(result) {
-    var items = [];
-    $.each( result.response.docs, function( key, val ) {
-        items.push([key,val.headline.main])
-        console.log(items);
-        return items;
-        });
-    }).fail(function() {
-        console.log("error in NYT API Call");
-        return false;
-    });*/
-}
-
-// helper for wikipedia integration
-var getWiki = function(location) {
-    var wikiURL = "https://en.wikipedia.org/w/api.php?"
-    wikiURL += $.param({
-        'action': 'query',
-        'list': 'search',
-        'srsearch': location,
-        'format': 'json',
-        'callback': 'wikiCallback'
-    });
-
-    $.ajax({
-        url: wikiURL,
-        dataType: "jsonp",
-        success: function(response){
-            console.log(response.query.search);
-            return response.query.search;
-        }
-    });
-}
-
 // model for the list of locations
 function locationmodel(initialList) {
     var self = this;
@@ -73,8 +19,6 @@ function locationmodel(initialList) {
     self.location = initialList.location;
     self.champions = initialList.champions;
     self.filtered = ko.observable(true);
-    self.news = "";
-    self.wiki = "";
 
     // create a map marker for the location
     self.marker = new google.maps.Marker({
@@ -87,7 +31,7 @@ function locationmodel(initialList) {
 
     // create an infowindow for the marker
     self.infowindow = new google.maps.InfoWindow({
-          content: '<div><h3>'+self.name+':<h3><p># of championships: '+self.champions+'<p></div>'
+          content: '<div class="infowin"><label>'+self.name+':<label><p># of championships: '+self.champions+'</p></div>'
         });
 }
 
@@ -140,20 +84,8 @@ function locationsVM() {
     // manages locations
     self.locations = ko.observableArray([]);
     self.selectedlocation = ko.observable(null);
-    self.selectednews = ko.observable();
-    self.selectedwiki = ko.observable();
 
     self.locationAnimate = function() {
-        if (self.selectedlocation().location.wiki === "") {
-            self.selectedlocation().location.wiki = getWiki(self.selectedlocation().location.name);
-            }
-        if (self.selectedlocation().location.news === "") {
-            self.selectedlocation().location.news = getNYT(self.selectedlocation().location.name);
-            }
-        self.selectednews() = self.selectedlocation().location.news;
-        self.selectedwiki() = self.selectedlocation().location.wiki;
-        console.log(self.selectednews());
-        console.log(self.selectedwiki());
         self.selectedlocation().setAnimation(google.maps.Animation.BOUNCE);
         self.selectedlocation().icon = icons['locationselected'];
         self.selectedlocation().location.infowindow.open(map,self.selectedlocation());

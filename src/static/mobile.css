@@ -1,4 +1,9 @@
 @media screen and (max-width: 400px){
+    .infowin {
+        font-family: 'Forum', cursive;
+        font-size: medium;
+        color: #3b3a36;
+    }
 
     .optionscontainer{
         display: flex;

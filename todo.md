@@ -49,17 +49,23 @@ Features
         do basic integration to 3rd API - Wiki - completed 14-08
         fix CORS and check output of both - wasn't CORS was rate limiting - completed 15-08
         move get info to click and check if info already present first... - completed 16-08
-        decide how best to add to infowindow or dom element and add it
-            selected info observable
-            open and close on dom with css
+        decide how best to add to infowindow or dom element and add it - completed 22-08
+            news and wiki on location as arrays
 
-        allow show / hide news / articles
-        style infowindow and make appear below options - or stick with info window only
+            news and wiki observables as arrays
+            link news and wiki obs to dom element
+            have show / hide on options menu
+            on click should change observable to news / wiki
+            on click should update news / wiki if empty
+            getnews / wiki should handle missing info
+            style nicely
+            style info window - completed 23-08
     add error handling for 404, response errors
         g maps basic - completed 20-08
         g maps trap error and show
         other apis basic
         other apis trap error and show
+    js review and submit
 
 Additional
     do neat visualisation with data from 3rd party API....
