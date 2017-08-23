@@ -42,7 +42,7 @@
         <div class="row">
             <div class="infobar">
                 <div data-bind="foreach: news">
-                    <div class="location" data-bind="text: description"></div>
+                    <a class="row location" target="_blank" data-bind="text: description, attr: {href: url}"></a>
                 </div>
                 <div data-bind="foreach: wiki">
                     <div class="location" data-bind="text: description"></div>

@@ -57,7 +57,8 @@ Features
             on click should change observable to news / wiki
             on click should update news / wiki if empty
             getnews / wiki should handle missing info
-            style nicely
+            style nicely and limit number of articles
+            ensure search term is good
             style info window - completed 23-08
     add error handling for 404, response errors
         g maps basic - completed 20-08

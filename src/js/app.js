@@ -41,7 +41,7 @@ function locationmodel(initialList) {
                     if (data.response.docs.length > 0){
                             data.response.docs.forEach(function(entry) {
                                 console.log(entry);
-                                self.news.push({'description': entry.snippet})
+                                self.news.push({'description': entry.headline.main, 'url': entry.web_url})
                             })
                         } else {
                             self.news.push({'description': 'no wiki'})
