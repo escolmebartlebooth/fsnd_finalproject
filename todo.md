@@ -50,10 +50,9 @@ Features
         fix CORS and check output of both - wasn't CORS was rate limiting - completed 15-08
         move get info to click and check if info already present first... - completed 16-08
         decide how best to add to infowindow or dom element and add it - completed 22-08
-            news and wiki on location as arrays
-
-            news and wiki observables as arrays
-            link news and wiki obs to dom element
+            news and wiki on location as arrays - completed 23-08
+            news and wiki observables as arrays  - completed 23-08
+            link news and wiki obs to dom element  - completed 23-08
             have show / hide on options menu
             on click should change observable to news / wiki
             on click should update news / wiki if empty

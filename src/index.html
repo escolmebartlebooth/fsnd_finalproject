@@ -41,7 +41,12 @@
         </div>
         <div class="row">
             <div class="infobar">
-                info placeholder
+                <div data-bind="foreach: news">
+                    <div class="location" data-bind="text: description"></div>
+                </div>
+                <div data-bind="foreach: wiki">
+                    <div class="location" data-bind="text: description"></div>
+                </div>
             </div>
         </div>
     </div>

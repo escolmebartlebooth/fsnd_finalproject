@@ -19,6 +19,71 @@ function locationmodel(initialList) {
     self.location = initialList.location;
     self.champions = initialList.champions;
     self.filtered = ko.observable(true);
+    self.news = [];
+    self.wiki = [];
+
+    // lazy load news and wiki
+    self.getNews = function() {
+        var nyturl = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+        if (self.news.length === 0) {
+            $.ajax({
+                'type': 'GET',
+                'url': nyturl,
+                data: {
+                    'q': self.ground,
+                    'sort': 'newest',
+                    'response-format': "jsonp",
+                    'api-key': '648ff5452e49454b855476afbc2d1b9b',
+                    'callback': 'svc_search_v2_articlesearch'
+                },
+                success: function(data) {
+                    // passed function object for data processing
+                    if (data.response.docs.length > 0){
+                            data.response.docs.forEach(function(entry) {
+                                console.log(entry);
+                                self.news.push({'description': entry.snippet})
+                            })
+                        } else {
+                            self.news.push({'description': 'no wiki'})
+                        }
+                    return self.news;
+                }
+            });
+        } else {
+            return self.news;
+        }
+    }
+
+    self.getWiki = function() {
+        var wikiURL = "https://en.wikipedia.org/w/api.php?"
+        wikiURL += $.param({
+            'action': 'query',
+            'list': 'search',
+            'srsearch': self.ground,
+            'format': 'json',
+            'callback': 'wikiCallback'
+        });
+
+        if (self.wiki.length === 0) {
+            $.ajax({
+                url: wikiURL,
+                dataType: "jsonp",
+                success: function(response){
+                    if (response.query.search.length > 0){
+                        response.query.search.forEach(function(entry) {
+                            console.log(entry);
+                            self.wiki.push({'description': entry.snippet})
+                        })
+                    } else {
+                        self.wiki.push({'description': 'no wiki'})
+                    }
+                    return self.wiki;
+                }
+            });
+        } else {
+            return self.wiki;
+        }
+    }
 
     // create a map marker for the location
     self.marker = new google.maps.Marker({
@@ -63,6 +128,11 @@ function locationsVM() {
         // bounds object
         map.fitBounds(bounds);
     }
+
+    // variable to handle news and wiki
+    self.news = ko.observableArray([{'description': 'no news'}]);
+    self.wiki = ko.observableArray([{'description':'no wiki'}]);
+
     // ko variable to track menu bar state
     self.isOpen = ko.observable(false);
 
@@ -86,6 +156,8 @@ function locationsVM() {
     self.selectedlocation = ko.observable(null);
 
     self.locationAnimate = function() {
+        self.news(self.selectedlocation().location.getNews());
+        self.wiki(self.selectedlocation().location.getWiki());
         self.selectedlocation().setAnimation(google.maps.Animation.BOUNCE);
         self.selectedlocation().icon = icons['locationselected'];
         self.selectedlocation().location.infowindow.open(map,self.selectedlocation());
