@@ -53,9 +53,9 @@ Features
             news and wiki on location as arrays - completed 23-08
             news and wiki observables as arrays  - completed 23-08
             link news and wiki obs to dom element  - completed 23-08
-            have show / hide on options menu
-            on click should change observable to news / wiki
-            on click should update news / wiki if empty
+            have show / hide on options menu - completed 24-08
+            on click should change observable to news / wiki - completed 24-08
+            on click should update news / wiki if empty - completed 24-08
             getnews / wiki should handle missing info
             style nicely and limit number of articles
             ensure search term is good

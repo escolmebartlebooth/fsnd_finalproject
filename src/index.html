@@ -30,6 +30,12 @@
                 <hr>
                     <div class="location" data-bind="click: toggleMap">Toggle Map Style</div>
                     <div class="location" data-bind="click: removefilter">Reset Filter</div>
+                    <div data-bind="if: infoState">
+                        <div class="location" data-bind="click: enableInfo">Hide Info</div>
+                    </div>
+                    <div data-bind="ifnot: infoState">
+                        <div class="location" data-bind="click: enableInfo">Show Info</div>
+                    </div>
                 <hr>
                 <div data-bind="foreach: locations">
                     <div data-bind="if: filtered">
@@ -40,7 +46,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="infobar">
+            <div class="infobar" data-bind="css: {open: isInfoOpen}">
                 <div data-bind="foreach: news">
                     <a class="row location" target="_blank" data-bind="text: description, attr: {href: url}"></a>
                 </div>

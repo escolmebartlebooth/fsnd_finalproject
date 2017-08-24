@@ -130,15 +130,38 @@ function locationsVM() {
     }
 
     // variable to handle news and wiki
-    self.news = ko.observableArray([{'description': 'no news'}]);
-    self.wiki = ko.observableArray([{'description':'no wiki'}]);
+    self.news = ko.observableArray([{'description': 'no news', 'url': ''}]);
+    self.wiki = ko.observableArray([{'description':'no wiki', 'url': ''}]);
 
     // ko variable to track menu bar state
     self.isOpen = ko.observable(false);
+    self.isInfoOpen = ko.observable(false);
+    self.infoState = ko.observable(false)
 
     // opens and closes menu bar based on state
     self.toggle = function () {
         self.isOpen(!self.isOpen());
+    };
+
+    // opens and closes info bar based on state
+    self.enableInfo = function () {
+        if (!self.infoState()) {
+            self.infoState(true);
+        } else {
+            self.infoState(false);
+            self.hideInfo();
+        }
+    };
+
+    // opens and closes info bar based on state
+    self.showInfo = function () {
+        if (self.infoState()) {
+            self.isInfoOpen(true);
+        }
+    };
+
+    self.hideInfo = function () {
+        self.isInfoOpen(false);
     };
 
     self.mapStyle = ko.observable()
@@ -158,12 +181,14 @@ function locationsVM() {
     self.locationAnimate = function() {
         self.news(self.selectedlocation().location.getNews());
         self.wiki(self.selectedlocation().location.getWiki());
+        self.showInfo();
         self.selectedlocation().setAnimation(google.maps.Animation.BOUNCE);
         self.selectedlocation().icon = icons['locationselected'];
         self.selectedlocation().location.infowindow.open(map,self.selectedlocation());
     }
 
     self.locationUnAnimate = function() {
+        self.hideInfo();
         self.selectedlocation().setAnimation(null);
         self.selectedlocation().icon = icons['locationnormal'];
         self.selectedlocation().location.infowindow.close();
