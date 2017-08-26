@@ -56,16 +56,19 @@ Features
             have show / hide on options menu - completed 24-08
             on click should change observable to news / wiki - completed 24-08
             on click should update news / wiki if empty - completed 24-08
-            getnews / wiki should handle missing info
-            style nicely and limit number of articles
-            ensure search term is good
+            FRI: getnews / wiki should handle missing info - completed 26-08
+            FRI: style nicely and limit number of articles - completed 26-08
+            FRI: ensure search term is good - completed 26-08
             style info window - completed 23-08
     add error handling for 404, response errors
         g maps basic - completed 20-08
-        g maps trap error and show
-        other apis basic
-        other apis trap error and show
-    js review and submit
+        SUN: g maps trap error and show
+        SUN: other apis basic
+        SUN: other apis trap error and show and attribute
+    SAT: js review
+    SAT: review against rubric
+    SUN: submit
+    MON: do linux and other elements
 
 Additional
     do neat visualisation with data from 3rd party API....

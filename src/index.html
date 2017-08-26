@@ -46,12 +46,12 @@
             </div>
         </div>
         <div class="row">
-            <div class="infobar" data-bind="css: {open: isInfoOpen}">
+            <div class="infobar" data-bind="css: {open: isInfoOpen}">Links:
                 <div data-bind="foreach: news">
-                    <a class="row location" target="_blank" data-bind="text: description, attr: {href: url}"></a>
+                    <a class="row infowin" target="_blank" data-bind="text: description, attr: {href: url}"></a>
                 </div>
                 <div data-bind="foreach: wiki">
-                    <div class="location" data-bind="text: description"></div>
+                    <a class="row infowin" target="_blank" data-bind="text: description, attr: {href: url}"></a>
                 </div>
             </div>
         </div>

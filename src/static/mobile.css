@@ -49,6 +49,8 @@
     .infobar {
         background-color: #e9ece5;
         width: 90%;
+        height: 300px;
+        overflow: auto;
         z-index: 3;
         -webkit-transform: translate(-600px, 0);
         transform: translate(-600px, 0);
