@@ -72,7 +72,6 @@ function locationmodel(initialList) {
                 dataType: "jsonp",
                 success: function(response){
                     // if the response has matches, populate the wiki attribute
-                    console.log(response);
                     if (response.query.search && response.query.search.length > 0){
                         response.query.search.forEach(function(entry) {
                             self.wiki.push({'description': entry.title, 'url': 'https://en.wikipedia.org/wiki/'+entry.title})
@@ -141,7 +140,7 @@ function locationsVM() {
     // ko variables to track menu bar and info bar states
     self.isOpen = ko.observable(false);
     self.isInfoOpen = ko.observable(false);
-    self.infoState = ko.observable(false);
+    self.infoState = ko.observable(true);
 
     // opens and closes menu bar based on state
     self.toggle = function () {
@@ -191,6 +190,7 @@ function locationsVM() {
         // grab the news and wiki inforation and show it
         self.news(self.selectedlocation().location.getNews());
         self.wiki(self.selectedlocation().location.getWiki());
+
         self.showInfo();
 
         // animate the selected marker, change the marker icon, show the info window
