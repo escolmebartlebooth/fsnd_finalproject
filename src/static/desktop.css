@@ -36,6 +36,13 @@ input {
     width: 100%;
 }
 
+.badmap {
+    z-index: 0;
+    position: absolute;
+    height: 300px;
+    width: 100%;
+}
+
 @media screen and (min-width: 401px) {
     .infowin {
         font-family: 'Forum', cursive;

@@ -1,5 +1,6 @@
 // global variable to hold the map
 var map;
+var mapState = ko.observable(false);
 
 // global variable to hold the initial map center
 var initialCenter = {lat: 53.817265, lng: -1.5848782};
@@ -25,6 +26,7 @@ function locationmodel(initialList) {
     // function to call the new york times api
     self.getNews = function() {
         var nyturl = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+        var newsresult = false;
         // if the location's news is empty, call the api
         if (self.news.length === 0) {
             $.ajax({
@@ -46,9 +48,17 @@ function locationmodel(initialList) {
                         } else {
                             self.news.push({'description': 'no news', 'url': ''})
                         }
+                    newsresult = true;
                     return self.news;
                 }
             });
+            setTimeout(function(){
+                if(!newsresult) {
+                    alert("failed news");
+                    self.news.push({'description': 'error looking for news', 'url': ''});
+                    return self.news;
+                }
+            }, 2000);
         } else {
             return self.news;
         }
@@ -57,6 +67,7 @@ function locationmodel(initialList) {
     // function to get wikipedia entries for the location
     self.getWiki = function() {
         var wikiURL = "https://en.wikipedia.org/w/api.php?"
+        var wikiresult = false;
         wikiURL += $.param({
             'action': 'query',
             'list': 'search',
@@ -79,9 +90,17 @@ function locationmodel(initialList) {
                     } else {
                         self.wiki.push({'description': 'no wiki', 'url': ''})
                     }
+                    wikiresult = true;
                     return self.wiki;
                 }
             });
+            setTimeout(function(){
+                if(!wikiresult) {
+                    alert("failed wiki");
+                    self.wiki.push({'description': 'error looking for wiki', 'url': ''});
+                    return self.wiki;
+                }
+            }, 2000);
         } else {
             return self.wiki;
         }
@@ -282,11 +301,15 @@ function locationsVM() {
 
 // handler for google maps error
 function mapError() {
-    console.log("called");
+    alert("map error");
+    mapState(true);
 }
 
 // Initialise the Google Map
 function initMap() {
+    // success from maps, so update state
+    mapState(false);
+
     // create the styled map
     var styledMapType = new google.maps.StyledMapType(mapstyle,
         {name: 'locations'});

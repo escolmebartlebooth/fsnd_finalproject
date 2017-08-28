@@ -60,16 +60,15 @@ Features
             FRI: style nicely and limit number of articles - completed 26-08
             FRI: ensure search term is good - completed 26-08
             style info window - completed 23-08
-            show information from get go and as default
+            show information from get go and as default - *****
     add error handling for 404, response errors
         g maps basic - completed 20-08
-        SUN: g maps trap error and show
-        SUN: other apis basic
-        SUN: other apis trap error and show and attribute
+        SUN: g maps trap error and show - *****
+        SUN: other apis basic - DONE
+        SUN: other apis trap error and show and attribute - DONE
     SAT: js review - completed 26-08
-    MON: review against rubric
-    MON: submit
-    MON: do linux and other elements
+    TUE: review against rubric - *****
+    TUE: submit - *****
 
 Additional
     do neat visualisation with data from 3rd party API....
