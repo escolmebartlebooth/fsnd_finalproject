@@ -49,7 +49,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="infobar" data-bind="css: {open: isInfoOpen}">Links: provided by New York Times and Wikipedia
+            <div class="infobar" data-bind="css: {open: isInfoOpen}">
+                <div class="row infowin" data-bind="click: hideInfo">Links: provided by New York Times and Wikipedia - click here to close
                 <div data-bind="foreach: news">
                     <a class="row infowin" target="_blank" data-bind="text: description, attr: {href: url}"></a>
                 </div>

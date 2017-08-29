@@ -90,6 +90,8 @@ function locationmodel(initialList) {
                     } else {
                         self.wiki.push({'description': 'no wiki', 'url': ''})
                     }
+
+                    // clear timeout flag so error isn't called
                     wikiresult = true;
                     return self.wiki;
                 }
@@ -207,10 +209,13 @@ function locationsVM() {
     // animate the selection location
     self.locationAnimate = function() {
         // grab the news and wiki inforation and show it
-        self.news(self.selectedlocation().location.getNews());
-        self.wiki(self.selectedlocation().location.getWiki());
-
-        self.showInfo();
+        self.selectedlocation().location.getNews();
+        self.selectedlocation().location.getWiki();
+        setTimeout(function(){
+                self.news(self.selectedlocation().location.getNews());
+                self.wiki(self.selectedlocation().location.getWiki());
+                self.showInfo();
+            }, 2500);
 
         // animate the selected marker, change the marker icon, show the info window
         self.selectedlocation().setAnimation(google.maps.Animation.BOUNCE);
