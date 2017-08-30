@@ -43,10 +43,10 @@ function locationmodel(initialList) {
                     // if there are matches, put them into the news attribute
                     if (data.response.docs && data.response.docs.length > 0){
                             data.response.docs.forEach(function(entry) {
-                                self.news.push({'description': entry.headline.main.substring(0,30)+'...', 'url': entry.web_url})
-                            })
+                                self.news.push({'description': entry.headline.main.substring(0,30)+'...', 'url': entry.web_url});
+                            });
                         } else {
-                            self.news.push({'description': 'no news', 'url': ''})
+                            self.news.push({'description': 'no news', 'url': ''});
                         }
                     newsresult = true;
                     return self.news;
@@ -62,11 +62,11 @@ function locationmodel(initialList) {
         } else {
             return self.news;
         }
-    }
+    };
 
     // function to get wikipedia entries for the location
     self.getWiki = function() {
-        var wikiURL = "https://en.wikipedia.org/w/api.php?"
+        var wikiURL = "https://en.wikipedia.org/w/api.php?";
         var wikiresult = false;
         wikiURL += $.param({
             'action': 'query',
@@ -85,10 +85,10 @@ function locationmodel(initialList) {
                     // if the response has matches, populate the wiki attribute
                     if (response.query.search && response.query.search.length > 0){
                         response.query.search.forEach(function(entry) {
-                            self.wiki.push({'description': entry.title, 'url': 'https://en.wikipedia.org/wiki/'+entry.title})
-                        })
+                            self.wiki.push({'description': entry.title, 'url': 'https://en.wikipedia.org/wiki/'+entry.title});
+                        });
                     } else {
-                        self.wiki.push({'description': 'no wiki', 'url': ''})
+                        self.wiki.push({'description': 'no wiki', 'url': ''});
                     }
 
                     // clear timeout flag so error isn't called
@@ -106,12 +106,12 @@ function locationmodel(initialList) {
         } else {
             return self.wiki;
         }
-    }
+    };
 
     // create a map marker for the location with a default custom marker
     self.marker = new google.maps.Marker({
         position: {lat: self.location.lat, lng: self.location.lng},
-        icon: icons['locationnormal'],
+        icon: icons.locationnormal,
         map: map,
         title: self.name + " " + self.ground,
         location: self
@@ -152,7 +152,7 @@ function locationsVM() {
         // Instruct the map to resize itself to display all markers in the
         // bounds object
         map.fitBounds(bounds);
-    }
+    };
 
     // variable to handle news and wiki
     self.news = ko.observableArray([{'description': 'no news', 'url': ''}]);
@@ -200,7 +200,7 @@ function locationsVM() {
         } else {
             map.setMapTypeId('roadmap');
         }
-    }
+    };
 
     // manages locations and selected location
     self.locations = ko.observableArray([]);
@@ -219,9 +219,9 @@ function locationsVM() {
 
         // animate the selected marker, change the marker icon, show the info window
         self.selectedlocation().setAnimation(google.maps.Animation.BOUNCE);
-        self.selectedlocation().icon = icons['locationselected'];
+        self.selectedlocation().icon = icons.locationselected;
         self.selectedlocation().location.infowindow.open(map,self.selectedlocation());
-    }
+    };
 
     // reset the selected marker
     self.locationUnAnimate = function() {
@@ -230,9 +230,9 @@ function locationsVM() {
 
         // stop the animation, change the marker back, close the infowindow
         self.selectedlocation().setAnimation(null);
-        self.selectedlocation().icon = icons['locationnormal'];
+        self.selectedlocation().icon = icons.locationnormal;
         self.selectedlocation().location.infowindow.close();
-    }
+    };
 
     // handle marker selection
     self.makeselection = function(marker) {
@@ -250,17 +250,17 @@ function locationsVM() {
             self.selectedlocation(marker);
             self.locationAnimate();
         }
-    }
+    };
 
     // handle the marker being clicked
     self.markerClick = function() {
         self.makeselection(this);
-    }
+    };
 
     // handle the location being selected and pass the marker to the animation handler
     self.clicklocation = function() {
         self.makeselection(this.marker);
-    }
+    };
 
     // variables to handle the filter
     self.filtervalue = ko.observable("");
@@ -279,8 +279,8 @@ function locationsVM() {
                 self.locations()[index].marker.setMap(map);
                 self.locations()[index].filtered(true);
             }
-        })
-    }
+        });
+    };
 
     // remove the filter
     self.removefilter = function () {
@@ -289,7 +289,7 @@ function locationsVM() {
             self.locations()[index].marker.setMap(map);
             self.locations()[index].filtered(true);
         });
-    }
+    };
 
     // before applying filter check string > 2 in length
     self.dofilter = function() {
@@ -298,7 +298,7 @@ function locationsVM() {
         } else if (self.filterOn()) {
             self.removefilter();
         }
-    }
+    };
 
     // initialise the view model
     self.init();
