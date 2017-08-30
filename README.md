@@ -16,7 +16,7 @@ include npm_modules folder in your gitignore file
 
 for grunt:
 
-run npm init in your root project folder
+run npm init in your root project folder to create a template package.json file
 run npm install -g grunt-cli
 run npm install grunt --save-dev
 run npm install grunt-contrib-uglify --save-dev
@@ -26,7 +26,7 @@ run npm install grunt-processhtml --save-dev
 
 this should update the package.json file created with npm init
 
-the provided gruntfile.js should then run provided directory structures map
+the provided gruntfile.js should then run providing directory structures exist
 
 the build process essentially:
     minifies css into /build/static
@@ -35,24 +35,19 @@ the build process essentially:
 
 ### knockout.js
 
-application relies on access to
+The application relies on access to
 
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 
 ### jquery
 
-application relies on access to:
+The application relies on access to:
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
 
 ### google fonts
 
-using: link href="https://fonts.googleapis.com/css?family=Forum|Source+Code+Pro" rel="stylesheet"> and
-font-family: 'Source Code Pro', monospace;
-and
-font-family: 'Forum', cursive;
-
-to style fonts.
+using: Forum & Source Code Pro to style fonts.
 
 ### 3rd party APIs
 
@@ -61,6 +56,8 @@ keys are embedded in this code source temporarily. If you want to use your own k
 to use the google maps api a key needs to be registered: https://developers.google.com/maps/
 to use the New York Times API a key needs to be registered: https://developer.nytimes.com/?mcubz=1
 to use the wikipedia API you don't need a key
+
+the new york times and wikipedia api calls are done using ajax. These are cross-origin calls so ajax fail/error processing isn't called in the event of a failure. A timeout event handler has been implemented for each
 
 ## code structure
 
@@ -103,11 +100,12 @@ you can:
         + toggle whether the API links are shown
 and that's about it
 
+tested on google pixel phone and on chrome and edge browsers.
+
 ## enhancements {not completed}
 
-+ do a neat visualisation with data from 3rd party API....
-+ allow change of zoom
-+ persist data
-+ implement re-zoom on css change
++ do cricket based visualisation with data from a sports based 3rd party API....
++ allow change of zoom and implement re-zoom on css change
++ allow new grounds to be added and persisted to local data storage
 + make hamburger and filter box right sized on screen size adjustment when changing screen size
 + create unit tests with jasmine
