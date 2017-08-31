@@ -8,25 +8,33 @@ uses a MIT Licence
 
 This project uses the following 3rd party applications:
 
+clone the repository from: https://github.com/escolmebartlebooth/fsnd_finalproject.git (git clone <location> in the root folder for your project)
+
+then move to the fsnd_finalproject folder
+
 ### node.js / grunt to enable the build process
 
-go to: https://nodejs.org/en/download/ and download the version applicable for your device
-after downloading run npm install in the root folder of your project
-include npm_modules folder in your gitignore file
+if you haven't already got node installed on your device:
+    + go to: https://nodejs.org/en/download/ and download the version applicable for your device
+    + after downloading run npm install in the fsnd_finalproject folder of your project
+    + include npm_modules folder in your gitignore file (the cloned repo should already have done this)
 
-for grunt:
+After this (or if you have node installed), you should only need to run the following:
 
-run npm init in your root project folder to create a template package.json file
-run npm install -g grunt-cli
-run npm install grunt --save-dev
-run npm install grunt-contrib-uglify --save-dev
-run npm install grunt-contrib-cssmin --save-dev
-run npm install grunt-contrib-copy --save-dev
-run npm install grunt-processhtml --save-dev
+    + for grunt:
+        + run npm init in your root project folder to create a template package.json file
+        + run npm install -g grunt-cli
+        + run npm install grunt --save-dev
+        + run npm install grunt-contrib-uglify --save-dev
+        + run npm install grunt-contrib-cssmin --save-dev
+        + run npm install grunt-contrib-copy --save-dev
+        + run npm install grunt-processhtml --save-dev
 
-this should update the package.json file created with npm init
+    + this should update the package.json file created with npm init
 
-the provided gruntfile.js should then run providing directory structures exist
+    + the provided gruntfile.js should then run providing directory structures exist
+
+    + the command grunt should build the project
 
 the build process essentially:
     minifies css into /build/static
