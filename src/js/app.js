@@ -272,10 +272,10 @@ function locationsViewModel() {
         self.filterOn(true);
         self.locations().forEach(function(data,index) {
             if (!reg.test(data.name)) {
-                self.locations()[index].marker.setMap(null);
+                self.locations()[index].marker.setVisible(false);
                 self.locations()[index].filtered(false);
             } else {
-                self.locations()[index].marker.setMap(map);
+                self.locations()[index].marker.setVisible(true);
                 self.locations()[index].filtered(true);
             }
         });
@@ -285,7 +285,7 @@ function locationsViewModel() {
     self.removeFilter = function () {
         self.filterOn(false);
         self.locations().forEach(function(data,index) {
-            self.locations()[index].marker.setMap(map);
+            self.locations()[index].marker.setVisible(true);
             self.locations()[index].filtered(true);
         });
     };
