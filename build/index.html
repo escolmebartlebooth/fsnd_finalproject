@@ -21,14 +21,14 @@
                 <div class="hamline"></div>
                 <div class="hamline"></div>
             </div>
-            <input class="thefilter" type="text" placeholder="please filter the locations" data-bind="textInput: filtervalue, event: {keyup: dofilter}">
+            <input class="thefilter" type="text" placeholder="please filter the locations" data-bind="textInput: filterValue, event: {keyup: doFilter}">
         </div>
         <div class="row">
             <div class="menubar" data-bind="css: {open: isOpen}">
                 <h3 data-bind="click: toggle">Options</h3>
                 <hr>
                     <div class="location" data-bind="click: toggleMap">Toggle Map Style</div>
-                    <div class="location" data-bind="click: removefilter">Reset Filter</div>
+                    <div class="location" data-bind="click: removeFilter">Reset Filter</div>
                     <div data-bind="if: infoState">
                         <div class="location" data-bind="click: enableInfo">Hide Info</div>
                     </div>
@@ -38,7 +38,7 @@
                 <hr>
                 <div data-bind="foreach: locations">
                     <div data-bind="if: filtered">
-                        <div class="location" data-bind="text: name, click: $root.clicklocation"></div>
+                        <div class="location" data-bind="text: name, click: $root.clickLocation"></div>
                     </div>
                 </div>
                 <hr>
@@ -46,7 +46,7 @@
         </div>
         <div class="row">
             <div class="infobar" data-bind="css: {open: isInfoOpen}">
-                <div class="row infowin" data-bind="click: hideInfo">Links: provided by New York Times and Wikipedia - click here to close
+                <div class="row infowin" data-bind="click: hideInfo">Links: provided by New York Times and Wikipedia - click here to close</div>
                 <div data-bind="foreach: news">
                     <a class="row infowin" target="_blank" data-bind="text: description, attr: {href: url}"></a>
                 </div>
@@ -56,8 +56,8 @@
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
     <script src="js/locations.min.js"></script>
     <script src="js/mapstyle.min.js"></script>
     <script src="js/app.min.js"></script>
