@@ -3,7 +3,7 @@
     + remove timeout and move to 2.2 jq and above and implement error
     + create optimised infowindows
     + implement windows resize event to bounds
-    + get rid of timeout for details
+    DONE get rid of timeout for details
     + look at the visible marker piece
     + update index.html as per html 5 guidelines
 
