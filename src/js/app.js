@@ -24,7 +24,7 @@ function locationModel(initialList) {
     self.wiki = [];
 
     // function to call the new york times api
-    self.getNews = function() {
+    self.getNews = function(location) {
         var nyturl = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
         var newsresult = false;
         // if the location's news is empty, call the api
@@ -48,24 +48,23 @@ function locationModel(initialList) {
                         } else {
                             self.news.push({'description': 'no news', 'url': ''});
                         }
-                    newsresult = true;
-                    return self.news;
+                    location.news(self.news);
                 }
             });
             setTimeout(function(){
                 if(!newsresult) {
                     alert("failed news");
                     self.news.push({'description': 'error looking for news', 'url': ''});
-                    return self.news;
+                    location.news(self.news);
                 }
             }, 2000);
         } else {
-            return self.news;
+            location.news(self.news);
         }
     };
 
     // function to get wikipedia entries for the location
-    self.getWiki = function() {
+    self.getWiki = function(location) {
         var wikiURL = "https://en.wikipedia.org/w/api.php?";
         var wikiresult = false;
         wikiURL += $.param({
@@ -90,21 +89,19 @@ function locationModel(initialList) {
                     } else {
                         self.wiki.push({'description': 'no wiki', 'url': ''});
                     }
-
-                    // clear timeout flag so error isn't called
-                    wikiresult = true;
-                    return self.wiki;
+                    //update the selected location's wiki
+                    location.wiki(self.wiki);
                 }
             });
             setTimeout(function(){
                 if(!wikiresult) {
                     alert("failed wiki");
                     self.wiki.push({'description': 'error looking for wiki', 'url': ''});
-                    return self.wiki;
+                    location.wiki(self.wiki);
                 }
             }, 2000);
         } else {
-            return self.wiki;
+            location.wiki(self.wiki);
         }
     };
 
@@ -209,14 +206,9 @@ function locationsViewModel() {
     // animate the selection location
     self.locationAnimate = function() {
         // grab the news and wiki inforation and show it
-        self.selectedlocation().location.getNews();
-        self.selectedlocation().location.getWiki();
-        setTimeout(function(){
-                self.news(self.selectedlocation().location.getNews());
-                self.wiki(self.selectedlocation().location.getWiki());
-                self.showInfo();
-            }, 2500);
-
+        self.selectedlocation().location.getNews(self);
+        self.selectedlocation().location.getWiki(self);
+        self.showInfo();
         // animate the selected marker, change the marker icon, show the info window
         self.selectedlocation().setAnimation(google.maps.Animation.BOUNCE);
         self.selectedlocation().icon = icons.locationselected;
