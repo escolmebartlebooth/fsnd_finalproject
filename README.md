@@ -1,6 +1,6 @@
 # to do following review
     + update function declarations to be lM and class names
-    + remove timeout and move to 2.2 jq and above and implement error
+    DONE remove timeout and move to 2.2 jq and above and implement error
     + create optimised infowindows
     + implement windows resize event to bounds
     DONE get rid of timeout for details

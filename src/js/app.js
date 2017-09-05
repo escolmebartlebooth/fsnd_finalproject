@@ -26,7 +26,6 @@ function locationModel(initialList) {
     // function to call the new york times api
     self.getNews = function(location) {
         var nyturl = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
-        var newsresult = false;
         // if the location's news is empty, call the api
         if (self.news.length === 0) {
             $.ajax({
@@ -49,15 +48,18 @@ function locationModel(initialList) {
                             self.news.push({'description': 'no news', 'url': ''});
                         }
                     location.news(self.news);
-                }
-            });
-            setTimeout(function(){
-                if(!newsresult) {
-                    alert("failed news");
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
                     self.news.push({'description': 'error looking for news', 'url': ''});
                     location.news(self.news);
+                    console.log('jqXHR:');
+                    console.log(jqXHR);
+                    console.log('textStatus:');
+                    console.log(textStatus);
+                    console.log('errorThrown:');
+                    console.log(errorThrown);
                 }
-            }, 2000);
+            });
         } else {
             location.news(self.news);
         }
@@ -91,15 +93,18 @@ function locationModel(initialList) {
                     }
                     //update the selected location's wiki
                     location.wiki(self.wiki);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    self.news.push({'description': 'error looking for wiki', 'url': ''});
+                    location.news(self.wiki);
+                    console.log('jqXHR:');
+                    console.log(jqXHR);
+                    console.log('textStatus:');
+                    console.log(textStatus);
+                    console.log('errorThrown:');
+                    console.log(errorThrown);
                 }
             });
-            setTimeout(function(){
-                if(!wikiresult) {
-                    alert("failed wiki");
-                    self.wiki.push({'description': 'error looking for wiki', 'url': ''});
-                    location.wiki(self.wiki);
-                }
-            }, 2000);
         } else {
             location.wiki(self.wiki);
         }
