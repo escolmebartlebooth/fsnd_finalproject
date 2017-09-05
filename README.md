@@ -1,12 +1,3 @@
-# to do following review
-    DONE update function declarations to be lM and class names
-    DONE remove timeout and move to 2.2 jq and above and implement error
-    DONE create optimised infowindows
-    DONE get rid of timeout for details
-    DONE implement windows resize event to bounds
-    DONE look at the visible marker piece
-    + update index.html as per html 5 guidelines
-
 # Udacity Full Stack Nano-degree: Neighbo(u)rhood Map
 
 created by David Escolme during summer 2017
