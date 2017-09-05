@@ -1,6 +1,7 @@
 // global variable to hold the map
 var map;
 var mapState = ko.observable(false);
+var mapInfoWindow;
 
 // global variable to hold the initial map center
 var initialCenter = {lat: 53.817265, lng: -1.5848782};
@@ -22,6 +23,7 @@ function locationModel(initialList) {
     self.filtered = ko.observable(true);
     self.news = [];
     self.wiki = [];
+    self.infoContent = '<div class="infowin"><label>'+self.name+':<label><p># of championships: '+self.champions+'</p></div>'
 
     // function to call the new york times api
     self.getNews = function(location) {
@@ -117,11 +119,6 @@ function locationModel(initialList) {
         title: self.name + " " + self.ground,
         location: self
     });
-
-    // create an infowindow for the marker
-    self.infoWindow = new google.maps.InfoWindow({
-          content: '<div class="infowin"><label>'+self.name+':<label><p># of championships: '+self.champions+'</p></div>'
-        });
 }
 
 // ko viewmodel for the list of locations
@@ -216,7 +213,8 @@ function locationsViewModel() {
         // animate the selected marker, change the marker icon, show the info window
         self.selectedLocation().setAnimation(google.maps.Animation.BOUNCE);
         self.selectedLocation().icon = icons.locationSelected;
-        self.selectedLocation().location.infowindow.open(map,self.selectedlocation());
+        mapInfoWindow.setContent(self.selectedLocation().location.infoContent);
+        mapInfoWindow.open(map, self.selectedLocation());
     };
 
     // reset the selected marker
@@ -227,7 +225,7 @@ function locationsViewModel() {
         // stop the animation, change the marker back, close the infowindow
         self.selectedLocation().setAnimation(null);
         self.selectedLocation().icon = icons.locationNormal;
-        self.selectedLocation().location.infoWindow.close();
+        mapInfoWindow.close();
     };
 
     // handle marker selection
@@ -325,6 +323,11 @@ function initMap() {
     //Associate the styled map with the MapTypeId and set it to display.
     map.mapTypes.set('styled_map', styledMapType);
     map.setMapTypeId('styled_map');
+
+    // create an infowindow for the marker
+    mapInfoWindow = new google.maps.InfoWindow({
+          content: ''
+        });
 
     // Activate Knockout once the map is initialized
     ko.applyBindings(new locationsViewModel());

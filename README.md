@@ -1,9 +1,9 @@
 # to do following review
-    + update function declarations to be lM and class names
+    DONE update function declarations to be lM and class names
     DONE remove timeout and move to 2.2 jq and above and implement error
-    + create optimised infowindows
-    + implement windows resize event to bounds
+    DONE create optimised infowindows
     DONE get rid of timeout for details
+    + implement windows resize event to bounds
     + look at the visible marker piece
     + update index.html as per html 5 guidelines
 
