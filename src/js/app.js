@@ -23,7 +23,7 @@ function locationModel(initialList) {
     self.filtered = ko.observable(true);
     self.news = [];
     self.wiki = [];
-    self.infoContent = '<div class="infowin"><label>'+self.name+':<label><p># of championships: '+self.champions+'</p></div>'
+    self.infoContent = '<div class="infowin"><label>'+self.name+':<label><p># of championships: '+self.champions+'</p></div>';
 
     // function to call the new york times api
     self.getNews = function(location) {
