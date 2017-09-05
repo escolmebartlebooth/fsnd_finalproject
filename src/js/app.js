@@ -13,7 +13,7 @@ var icons = {
 };
 
 // data model for each location
-function locationmodel(initialList) {
+function locationModel(initialList) {
     var self = this;
     self.name = initialList.name;
     self.ground = initialList.ground;
@@ -124,7 +124,7 @@ function locationmodel(initialList) {
 }
 
 // ko viewmodel for the list of locations
-function locationsVM() {
+function locationsViewModel() {
     var self = this;
 
     self.init = function() {
@@ -136,7 +136,7 @@ function locationsVM() {
         // loop through the data and create a location model for each one
         locationdata.forEach(function(data) {
                 // create the location data
-                location = new locationmodel(data);
+                location = new locationModel(data);
 
                 // bind event
                 location.marker.addListener('click', self.markerClick);
@@ -331,5 +331,5 @@ function initMap() {
     map.setMapTypeId('styled_map');
 
     // Activate Knockout once the map is initialized
-    ko.applyBindings(new locationsVM());
+    ko.applyBindings(new locationsViewModel());
 }
