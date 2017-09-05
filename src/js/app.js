@@ -124,12 +124,12 @@ function locationModel(initialList) {
 // ko viewmodel for the list of locations
 function locationsViewModel() {
     var self = this;
+    var bounds = new google.maps.LatLngBounds();
 
     self.init = function() {
         // load the initial data
         var locations = [];
         var location;
-        var bounds = new google.maps.LatLngBounds();
 
         // loop through the data and create a location model for each one
         locationdata.forEach(function(data) {
@@ -151,6 +151,11 @@ function locationsViewModel() {
         // bounds object
         map.fitBounds(bounds);
     };
+
+    google.maps.event.addDomListener(window, "resize", function() {
+        google.maps.event.trigger(map, "resize");
+        map.fitBounds(bounds);
+    });
 
     // variable to handle news and wiki
     self.news = ko.observableArray([{'description': 'no news', 'url': ''}]);
