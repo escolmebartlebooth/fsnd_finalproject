@@ -8,8 +8,8 @@ var initialCenter = {lat: 53.817265, lng: -1.5848782};
 // icons for markers
 var iconroot = 'http://maps.google.com/mapfiles/ms/icons/';
 var icons = {
-    locationselected: iconroot + 'ylw-pushpin.png',
-    locationnormal: iconroot + 'red-pushpin.png'
+    locationSelected: iconroot + 'ylw-pushpin.png',
+    locationNormal: iconroot + 'red-pushpin.png'
 };
 
 // data model for each location
@@ -68,7 +68,6 @@ function locationModel(initialList) {
     // function to get wikipedia entries for the location
     self.getWiki = function(location) {
         var wikiURL = "https://en.wikipedia.org/w/api.php?";
-        var wikiresult = false;
         wikiURL += $.param({
             'action': 'query',
             'list': 'search',
@@ -113,14 +112,14 @@ function locationModel(initialList) {
     // create a map marker for the location with a default custom marker
     self.marker = new google.maps.Marker({
         position: {lat: self.location.lat, lng: self.location.lng},
-        icon: icons.locationnormal,
+        icon: icons.locationNormal,
         map: map,
         title: self.name + " " + self.ground,
         location: self
     });
 
     // create an infowindow for the marker
-    self.infowindow = new google.maps.InfoWindow({
+    self.infoWindow = new google.maps.InfoWindow({
           content: '<div class="infowin"><label>'+self.name+':<label><p># of championships: '+self.champions+'</p></div>'
         });
 }
@@ -206,18 +205,18 @@ function locationsViewModel() {
 
     // manages locations and selected location
     self.locations = ko.observableArray([]);
-    self.selectedlocation = ko.observable(null);
+    self.selectedLocation = ko.observable(null);
 
     // animate the selection location
     self.locationAnimate = function() {
         // grab the news and wiki inforation and show it
-        self.selectedlocation().location.getNews(self);
-        self.selectedlocation().location.getWiki(self);
+        self.selectedLocation().location.getNews(self);
+        self.selectedLocation().location.getWiki(self);
         self.showInfo();
         // animate the selected marker, change the marker icon, show the info window
-        self.selectedlocation().setAnimation(google.maps.Animation.BOUNCE);
-        self.selectedlocation().icon = icons.locationselected;
-        self.selectedlocation().location.infowindow.open(map,self.selectedlocation());
+        self.selectedLocation().setAnimation(google.maps.Animation.BOUNCE);
+        self.selectedLocation().icon = icons.locationSelected;
+        self.selectedLocation().location.infowindow.open(map,self.selectedlocation());
     };
 
     // reset the selected marker
@@ -226,47 +225,47 @@ function locationsViewModel() {
         self.hideInfo();
 
         // stop the animation, change the marker back, close the infowindow
-        self.selectedlocation().setAnimation(null);
-        self.selectedlocation().icon = icons.locationnormal;
-        self.selectedlocation().location.infowindow.close();
+        self.selectedLocation().setAnimation(null);
+        self.selectedLocation().icon = icons.locationNormal;
+        self.selectedLocation().location.infoWindow.close();
     };
 
     // handle marker selection
-    self.makeselection = function(marker) {
+    self.makeSelection = function(marker) {
         // if same marker selected, stop animation
-        if (self.selectedlocation() === marker) {
+        if (self.selectedLocation() === marker) {
             self.locationUnAnimate();
-            self.selectedlocation(null);
+            self.selectedLocation(null);
         // if different marker, stop animation, change selection and animate new marker
-        } else if (self.selectedlocation() !== null) {
+        } else if (self.selectedLocation() !== null) {
             self.locationUnAnimate();
-            self.selectedlocation(marker);
+            self.selectedLocation(marker);
             self.locationAnimate();
         } else {
             // just animate the marker and make it selected
-            self.selectedlocation(marker);
+            self.selectedLocation(marker);
             self.locationAnimate();
         }
     };
 
     // handle the marker being clicked
     self.markerClick = function() {
-        self.makeselection(this);
+        self.makeSelection(this);
     };
 
     // handle the location being selected and pass the marker to the animation handler
-    self.clicklocation = function() {
-        self.makeselection(this.marker);
+    self.clickLocation = function() {
+        self.makeSelection(this.marker);
     };
 
     // variables to handle the filter
-    self.filtervalue = ko.observable("");
+    self.filterValue = ko.observable("");
     self.filterOn = ko.observable(false);
 
     // filter function
-    self.applyfilter = function () {
+    self.applyFilter = function () {
         // make the regex the filter contents and select locations that match filter
-        reg = new RegExp(self.filtervalue(),'i');
+        reg = new RegExp(self.filterValue(),'i');
         self.filterOn(true);
         self.locations().forEach(function(data,index) {
             if (!reg.test(data.name)) {
@@ -280,7 +279,7 @@ function locationsViewModel() {
     };
 
     // remove the filter
-    self.removefilter = function () {
+    self.removeFilter = function () {
         self.filterOn(false);
         self.locations().forEach(function(data,index) {
             self.locations()[index].marker.setMap(map);
@@ -289,11 +288,11 @@ function locationsViewModel() {
     };
 
     // before applying filter check string > 2 in length
-    self.dofilter = function() {
-        if (self.filtervalue().length > 2) {
-            self.applyfilter();
+    self.doFilter = function() {
+        if (self.filterValue().length > 2) {
+            self.applyFilter();
         } else if (self.filterOn()) {
-            self.removefilter();
+            self.removeFilter();
         }
     };
 

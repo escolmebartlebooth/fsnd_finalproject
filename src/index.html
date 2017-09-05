@@ -25,14 +25,14 @@
                 <div class="hamline"></div>
                 <div class="hamline"></div>
             </div>
-            <input class="thefilter" type="text" placeholder="please filter the locations" data-bind="textInput: filtervalue, event: {keyup: dofilter}">
+            <input class="thefilter" type="text" placeholder="please filter the locations" data-bind="textInput: filterValue, event: {keyup: doFilter}">
         </div>
         <div class="row">
             <div class="menubar" data-bind="css: {open: isOpen}">
                 <h3 data-bind="click: toggle">Options</h3>
                 <hr>
                     <div class="location" data-bind="click: toggleMap">Toggle Map Style</div>
-                    <div class="location" data-bind="click: removefilter">Reset Filter</div>
+                    <div class="location" data-bind="click: removeFilter">Reset Filter</div>
                     <div data-bind="if: infoState">
                         <div class="location" data-bind="click: enableInfo">Hide Info</div>
                     </div>
@@ -42,7 +42,7 @@
                 <hr>
                 <div data-bind="foreach: locations">
                     <div data-bind="if: filtered">
-                        <div class="location" data-bind="text: name, click: $root.clicklocation"></div>
+                        <div class="location" data-bind="text: name, click: $root.clickLocation"></div>
                     </div>
                 </div>
                 <hr>
