@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/escolmebartlebooth/fsnd_finalproject#readme",
   "devDependencies": {
-    "grunt": "^1.3.0",
+    "grunt": "^1.5.2",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-cssmin": "^2.2.0",
     "grunt-contrib-uglify": "^3.0.1",
